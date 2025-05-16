@@ -30,32 +30,24 @@ Edit below parameters:
 allow_duplicate_ip = false →true 		
 addr_book_strict = true → false
 Add in [consensus] section  block_gas_limit = 20000000
-                  4.Maximum number of transactions in the mempool
-                     size = 5000 → 1000000
+1.Maximum number of transactions in the mempool
+size = 5000 → 1000000
 
 
 2.  Create validator key 
-
 mrmint keys add validator1--algo eth_secp256k1 --keyring-backend test
 
 3.  Add genesis account 
-
 mrmint add-genesis-account validator1 100000000000000000000000000aphoton --keyring-backend test
 
-
-
-
 4. Create genesis trx
+mrmint gentx validator1 1000000aphoton --chain-id os_9000-1 --keyring-backend test
 
-  mrmint gentx validator1 1000000aphoton --chain-id os_9000-1 --keyring-backend test
-
-             Chain id should match
+Chain id should match
 
 
 5. Add above validator to genesis
-
-	mrmint collect-gentxs
+mrmint collect-gentxs
 
 6. Start chain
-
 mrmint start --home ~/.mrmint
